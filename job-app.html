@@ -3,11 +3,32 @@
 </head>
 
 <body>
-  {{> hello}}
+	<!-- display these templates -->
+<!-- 	{{>githubOauth}} -->
+{{>addJob}}
 </body>
 
-<template name="hello">
+<!-- <template name="hello">
   <h1>Hello World!</h1>
   {{greeting}}
-  <input type="button" value="Click" />
+  <input type="button" value="Click"/>
+</template> -->
+
+<!-- form for adding new job of interest -->
+<template name="addJob">
+  <h1>Jobs of Interest</h1>
+  <input type="text" placeholder="Link"/>
+  <input type="text" placeholder="Company"/>
+  <input type="text" placeholder="Position Title"/><br>
+  <input type="button" value="Add Job"/>
+</template>
+
+
+<template name="githubOauth">
+	{{#if currentUser}}
+		<script>console.log(currentUser)</script>
+	{{else}}
+	<script>console.log(currentUser)</script>
+		{{> loginButtons align="right"}}
+	{{/if}}
 </template>
