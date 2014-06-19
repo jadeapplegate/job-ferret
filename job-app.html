@@ -6,6 +6,7 @@
 	<!-- display these templates -->
 <!-- 	{{>githubOauth}} -->
 {{>addJob}}
+{{>jobsList}}
 </body>
 
 <!-- <template name="hello">
@@ -17,10 +18,19 @@
 <!-- form for adding new job of interest -->
 <template name="addJob">
   <h1>Jobs of Interest</h1>
-  <input type="text" placeholder="Link"/>
-  <input type="text" placeholder="Company"/>
-  <input type="text" placeholder="Position Title"/><br>
-  <input type="button" value="Add Job"/>
+  <input name='link' type="text" placeholder="Link"/>
+  <input name='company' type="text" placeholder="Company"/>
+  <input name='title' type="text" placeholder="Position Title"/><br>
+  <input id="addJob" type="button" value="Add Job"/>
+</template>
+
+<template name="jobsList">
+	<h1>All Jobs of Interest</h1>
+	{{#each jobs}}
+		<h2><a href="{{link}}">{{title}} at {{company}}</a></h2>
+		<input class='delete' data-id={{_id}} value="delete" type='button' />
+		<input class='pursue' data-id={{_id}} value="pursue" type='button' />
+	{{/each}}
 </template>
 
 
