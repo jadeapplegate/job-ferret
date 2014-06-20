@@ -22,7 +22,6 @@
 	</div>
 </template>
 
-
 <!-- modal for adding job of interest -->
 <template name="addJobModal">
 <div class="modal fade" id="addJobModal" tabindex="-1" role="dialog" aria-labelledby="addJobModal" aria-hidden="true">
@@ -73,8 +72,24 @@
 			<input name='contact_name' type="text" placeholder="Contact Name"/>
 			<input name='contact_email' type="text" placeholder="Contact Email"/>
 			<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
-			<input name='salary' type="text" placeholder="Salary"/>
+<!-- 			<input name='salary' type="text" placeholder="Salary"/> -->
+	    <div class="input-group">
+	      <div class="input-group-btn">
+	        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Ranges <span class="caret"></span></button>
+	        <ul class="dropdown-menu">
+	          <li><a href="#">$60,000</a></li>
+	          <li><a href="#">$70,000</a></li>
+	          <li><a href="#">$80,000</a></li>
+	          <li><a href="#">$90,000</a></li>
+	          <li><a href="#">$100,000</a></li>
+	          <li><a href="#">$110,000</a></li>
+	          <li><a href="#">Other</a></li>
+	        </ul>
+	      </div><!-- /btn-group -->
+	      <input type="text" class="form-control">
+	    </div><!-- /input-group -->
 			<input name='requirements' type="text" placeholder="Requirements"/><br>
+<!-- 			<textarea class="form-control" rows="3"></textarea> -->
 			<input class="update" type="button" value="Update"/>
       </div>
       <div class="modal-footer">
@@ -103,4 +118,3 @@
 		{{> loginButtons align="right"}}
 	{{/if}}
 </template>
-
