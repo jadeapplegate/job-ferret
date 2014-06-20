@@ -14,11 +14,11 @@ if (Meteor.isClient) {
   //   }
   // });
 
-  Template.jobsList.jobs = function () {
-    return Jobs.find();
+  Template.interestList.jobs = function () {
+    return Jobs.find({pursuing: false});
   };
  
-  Template.jobsList.events({
+  Template.interestList.events({
     'click .delete' : function(event, template) {
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
@@ -32,20 +32,27 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.addJob.events({
+  Template.addJobModal.events({
     'click #addJob' : function(event, template) {
       event.preventDefault();
+      console.log("meow");
       var data = {
         link: template.find("input[name=link]").value,
         title: template.find("input[name=title]").value,
         company: template.find("input[name=company]").value,
         pursuing: false
       };
-
       Jobs.insert(data);
     }
   })
+
+  Template.pursuingList.jobs = function () {
+    return Jobs.find({pursuing: true});
+  };
+
 }
+
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {

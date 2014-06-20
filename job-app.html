@@ -3,36 +3,96 @@
 </head>
 
 <body>
-	<!-- display these templates -->
-<!-- 	{{>githubOauth}} -->
-{{>addJob}}
-{{>jobsList}}
+<!-- display these templates -->
+	<!-- 	{{>githubOauth}} -->
+	{{>addJobModal}}
+	{{>pursuingModal}}
+	{{>addJobButton}}
+	{{>interestList}}
+	{{>pursuingList}}
 </body>
 
-<!-- <template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click"/>
-</template> -->
-
-<!-- form for adding new job of interest -->
-<template name="addJob">
-  <h1>Jobs of Interest</h1>
-  <input name='link' type="text" placeholder="Link"/>
-  <input name='company' type="text" placeholder="Company"/>
-  <input name='title' type="text" placeholder="Position Title"/><br>
-  <input id="addJob" type="button" value="Add Job"/>
+<!-- on click, opens up a modal box which displays a form -->
+<template name="addJobButton">
+	<div class="addJob">
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addJobModal">
+  		Add Job
+		</button>
+	</div>
 </template>
 
-<template name="jobsList">
+
+<!-- modal for adding job of interest -->
+<template name="addJobModal">
+<div class="modal fade" id="addJobModal" tabindex="-1" role="dialog" aria-labelledby="addJobModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="addJobModal">Add Job</h4>
+      </div>
+      <div class="modal-body">
+      	  <input name='link' type="text" placeholder="Link"/>
+				  <input name='company' type="text" placeholder="Company"/>
+				  <input name='title' type="text" placeholder="Position Title"/><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="addJob" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<!-- appends list of all jobs of interest -->
+<template name="interestList">
 	<h1>All Jobs of Interest</h1>
 	{{#each jobs}}
 		<h2><a href="{{link}}">{{title}} at {{company}}</a></h2>
-		<input class='delete' data-id={{_id}} value="delete" type='button' />
-		<input class='pursue' data-id={{_id}} value="pursue" type='button' />
+		<button class="btn btn-default btn-lg delete" data-id={{_id}}>Delete</button>
+		<!-- on click, opens up a modal box which displays a form -->
+	<button class="btn btn-primary btn-lg pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal">Pursue</button>
 	{{/each}}
 </template>
 
+<!-- modal for showing the pursuing form -->
+<template name="pursuingModal">
+<div class="modal fade" id="pursuingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add Job</h4>
+      </div>
+      <div class="modal-body">
+  	  <input name='link' type="text" placeholder="Link"/>
+			<input name='title' type="text" placeholder="Position Title"/>
+			<input name='company' type="text" placeholder="Company"/><br>
+			<input name='contact_name' type="text" placeholder="Contact Name"/>
+			<input name='contact_email' type="text" placeholder="Contact Email"/>
+			<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
+			<input name='salary' type="text" placeholder="Salary"/>
+			<input name='requirements' type="text" placeholder="Requirements"/><br>
+			<input class="update" type="button" value="Update"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="addJob" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<!-- append list of all jobs pursuing -->
+<template name="pursuingList">
+	<h1>All Pursuing</h1>
+	{{#each jobs}}
+		<h2><a href="{{link}}">{{title}} at {{company}}</a></h2>
+		<input class='update' data-id={{_id}} value="Update" type='button' />
+	{{/each}}
+</template>
 
 <template name="githubOauth">
 	{{#if currentUser}}
@@ -42,3 +102,4 @@
 		{{> loginButtons align="right"}}
 	{{/if}}
 </template>
+
