@@ -5,6 +5,7 @@
 <body>
 <!-- display these templates -->
 	<!-- 	{{>githubOauth}} -->
+<!-- 	{{>header}} -->
 	{{>addJobModal}}
 	{{>pursuingModal}}
 	{{>addJobButton}}
@@ -32,9 +33,9 @@
         <h4 class="modal-title" id="addJobModal">Add Job</h4>
       </div>
       <div class="modal-body">
-      	  <input name='link' type="text" placeholder="Link"/>
-				  <input name='company' type="text" placeholder="Company"/>
+				  <input name='company' type="text" autofocus="true" placeholder="Company"/>
 				  <input name='title' type="text" placeholder="Position Title"/><br>
+				  <input name='link' type="text" placeholder="Link"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -49,10 +50,10 @@
 <template name="interestList">
 	<h1>All Jobs of Interest</h1>
 	{{#each jobs}}
-		<h2><a href="{{link}}">{{title}} at {{company}}</a></h2>
-		<button class="btn btn-default btn-lg delete" data-id={{_id}}>Delete</button>
+		<h2><a href="{{link}}">{{title}} at {{company}}</a>
+			<button class="btn btn-default btn-lg delete" data-id={{_id}}>Delete</button>
 		<!-- on click, opens up a modal box which displays a form -->
-	<button class="btn btn-primary btn-lg pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal">Pursue</button>
+	<button class="btn btn-primary btn-lg pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal">Pursue</button></h2>
 	{{/each}}
 </template>
 
@@ -89,8 +90,8 @@
 <template name="pursuingList">
 	<h1>All Pursuing</h1>
 	{{#each jobs}}
-		<h2><a href="{{link}}">{{title}} at {{company}}</a></h2>
-		<input class='update' data-id={{_id}} value="Update" type='button' />
+		<h2><a href="{{link}}">{{title}} at {{company}}</a>
+		<button class="btn btn-default btn-lg update" data-id={{_id}}>Update</button></h2>
 	{{/each}}
 </template>
 
