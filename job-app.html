@@ -5,13 +5,38 @@
 <body>
 <!-- display these templates -->
 	<!-- 	{{>githubOauth}} -->
-<!-- 	{{>header}} -->
+	{{>navbar}}
+	{{>addJobButton}}
 	{{>addJobModal}}
 	{{>pursuingModal}}
-	{{>addJobButton}}
 	{{>interestList}}
 	{{>pursuingList}}
 </body>
+
+	<template name="navbar">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		       <div class="navbar-inner">
+		         <div class="container">
+		           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		             <span class="icon-bar"></span>
+		             <span class="icon-bar"></span>
+		             <span class="icon-bar"></span>
+		           </button>
+		           <a class="brand" href="#">Job App</a>
+		           <div class="nav-collapse collapse">
+		             <ul class="nav">
+		               <li class="active"><a href="#">Home</a></li>
+		               <li><a href="#about">About</a></li>
+		               <li><a href="#contact">Contact</a></li>
+		               <li><a href="#signOut">Sign Out</a></li>
+		             </ul>
+		           </div>
+		         </div>
+		       </div>
+		     </div>
+		     <div class="container">
+		   </div>
+	  </template>
 
 <!-- on click, opens up a modal box which displays a form -->
 <template name="addJobButton">
@@ -72,24 +97,7 @@
 			<input name='contact_name' type="text" placeholder="Contact Name"/>
 			<input name='contact_email' type="text" placeholder="Contact Email"/>
 			<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
-<!-- 			<input name='salary' type="text" placeholder="Salary"/> -->
-	    <div class="input-group">
-	      <div class="input-group-btn">
-	        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Ranges <span class="caret"></span></button>
-	        <ul class="dropdown-menu">
-	          <li><a href="#">$60,000</a></li>
-	          <li><a href="#">$70,000</a></li>
-	          <li><a href="#">$80,000</a></li>
-	          <li><a href="#">$90,000</a></li>
-	          <li><a href="#">$100,000</a></li>
-	          <li><a href="#">$110,000</a></li>
-	          <li><a href="#">Other</a></li>
-	        </ul>
-	      </div><!-- /btn-group -->
-	      <input type="text" class="form-control">
-	    </div><!-- /input-group -->
 			<input name='requirements' type="text" placeholder="Requirements"/><br>
-<!-- 			<textarea class="form-control" rows="3"></textarea> -->
 			<input class="update" type="button" value="Update"/>
       </div>
       <div class="modal-footer">
