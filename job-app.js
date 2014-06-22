@@ -87,6 +87,7 @@ if (Meteor.isClient) {
       $('#end_salary').val(endSalaryDropdown);
     }
   })
+
 }
 
 

@@ -100,7 +100,7 @@
 				<input name='contact_email' type="text" placeholder="Contact Email"/>
 				<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
 				<div class="btn-group" id="dropdown_menu">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span>
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Min Salary<span class="caret"></span>
 				  </button>
 				  <ul class="start_salary_dropdown dropdown-menu" role="menu">
 	          <li><a href="#">$60,000</a></li>
@@ -115,7 +115,7 @@
 				</div>
 				<br>
 					<div class="btn-group" id="dropdown_menu">
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span>
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Max Salary<span class="caret"></span>
 					  </button>
 					  <ul class="end_salary_dropdown dropdown-menu" role="menu">
 		          <li><a href="#">$60,000</a></li>
@@ -127,9 +127,13 @@
 		          <li><a href="#">Other</a></li>
 		        </ul>
 		        <input type="text" id="end_salary" class="form-control">
-				</div>
-				<br>
-				<input name='requirements' type="text" placeholder="Requirements"/><br>
+		      </div>
+				<div class="requirements_checkbox">
+					<input type="checkbox" name="option1" value="resume"> Resume<br>
+					<input type="checkbox" name="option2" value="cover_letter" checked>Cover Letter<br>
+					<input type="checkbox" name="option3" value="portfolio">Portfolio Link<br>
+					<input type="checkbox" name="option4" value="code_sample" checked>Code Sample<br>
+					<input type="checkbox" name="option5" value="references">References<br>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -137,6 +141,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </template>
 
