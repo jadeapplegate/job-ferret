@@ -1,18 +1,6 @@
 Jobs = new Meteor.Collection("jobs");
 
 if (Meteor.isClient) {
-  // Template.hello.greeting = function () {
-  //   return "Welcome to job-app.";
-  // };
-
-  // Template.hello.events({
-  //   'click input': function () {
-  //     // template data, if any, is available in 'this'
-  //     if (typeof console !== 'undefined'){
-  //       alert("You pressed the button");
-  //     }
-  //   }
-  // });
 
   Template.interestList.jobs = function () {
     return Jobs.find({pursuing: false});
@@ -27,8 +15,41 @@ if (Meteor.isClient) {
     'click .pursue_job': function(event, template){
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
-      Jobs.update({_id: jobId}, {$set: {pursuing: true}})
+      var linkText = template.find("input[name=link]").value;
+      var link = /http/.test(linkText) ? linkText : "http://" + linkText;
+      var data = {
+        link: link,
+        //???same as below??? dom node/jquery object------- title: $(template.find("input[name=title]")).val(),
+        title: template.find("input[name=title]").value,
+        company: template.find("input[name=company]").value,
+        contact_name: template.find("input[name=contact_name]").value,
+        contact_email: template.find("input[name=contact_email]").value,
+        contact_phone: template.find("input[name=contact_phone]").value,
+        min_salary: template.find("input[name=min_salary]").value,
+        max_salary: template.find("input[name=max_salary]").value,
+        resume: template.find("input[name=resume]").value,
+        cover_letter: template.find("input[name=cover_letter]").value,
+        portfolio: template.find("input[name=portfolio]").value,
+        code_sample: template.find("input[name=code_sample]").value,
+        references: template.find("input[name=references]").value,
+        pursuing: true,
+      };
+      console.info(data);
+      Jobs.update({_id: jobId}, {$set: data})
+    },
+    'click .min_salary_dropdown li a' : function(event, template) {
+      event.preventDefault();
+      var minSalaryDropdown = $(event.target).text();
+      $('#min_salary').val(minSalaryDropdown);
+    },
+    'click .max_salary_dropdown li a' : function(event, template) {
+      event.preventDefault();
+      var maxSalaryDropdown = $(event.target).text();
+      $('#max_salary').val(maxSalaryDropdown);
     }
+
+
+
   });
 
   Template.addJobModal.events({
@@ -38,6 +59,7 @@ if (Meteor.isClient) {
       var link = /http/.test(linkText) ? linkText : "http://" + linkText;
       var data = {
         link: link,
+        //???same as below??? dom node/jquery object------- title: $(template.find("input[name=title]")).val(),
         title: template.find("input[name=title]").value,
         company: template.find("input[name=company]").value,
         pursuing: false
@@ -62,30 +84,6 @@ if (Meteor.isClient) {
       console.log("update clicked");
     }
   });
-
-  Template.pursuingModal.job = function () {
-
-  };
-
-  Template.pursuingModal.events({
-    'click .start_salary_dropdown li a' : function(event, template) {
-      console.log('changed');
-      event.preventDefault();
-      var startSalaryDropdown = $(event.target).text();
-      console.log(startSalaryDropdown);
-      $('#start_salary').val(startSalaryDropdown);
-    }
-  })
-
-  Template.pursuingModal.events({
-    'click .end_salary_dropdown li a' : function(event, template) {
-      console.log('changed');
-      event.preventDefault();
-      var endSalaryDropdown = $(event.target).text();
-      console.log(endSalaryDropdown);
-      $('#end_salary').val(endSalaryDropdown);
-    }
-  })
 
 }
 
