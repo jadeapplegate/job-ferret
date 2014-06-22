@@ -9,3 +9,7 @@
 .modal:not(.in) {
 	z-index: -4;
 }
+
+#dropdown_menu{
+	margin-bottom: 40px;
+}

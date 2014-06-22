@@ -64,8 +64,30 @@ if (Meteor.isClient) {
     }
   });
 
-}
+  Template.pursuingModal.job = function () {
 
+  };
+
+  Template.pursuingModal.events({
+    'click .start_salary_dropdown li a' : function(event, template) {
+      console.log('changed');
+      event.preventDefault();
+      var startSalaryDropdown = $(event.target).text();
+      console.log(startSalaryDropdown);
+      $('#start_salary').val(startSalaryDropdown);
+    }
+  })
+
+  Template.pursuingModal.events({
+    'click .end_salary_dropdown li a' : function(event, template) {
+      console.log('changed');
+      event.preventDefault();
+      var endSalaryDropdown = $(event.target).text();
+      console.log(endSalaryDropdown);
+      $('#end_salary').val(endSalaryDropdown);
+    }
+  })
+}
 
 
 if (Meteor.isServer) {
