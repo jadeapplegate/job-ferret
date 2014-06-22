@@ -51,6 +51,19 @@ if (Meteor.isClient) {
     return Jobs.find({pursuing: true});
   };
 
+  Template.pursuingList.events({
+    'click .delete' : function(event, template) {
+      event.preventDefault();
+      var jobId = $(event.target).attr('data-id');
+      Jobs.remove({_id: jobId});
+    },
+    'click .update' : function(event, template) {
+      event.preventDefault();
+      var jobId = $(event.target).attr('data-id');
+      console.log("update clicked");
+    }
+  });
+
 }
 
 
