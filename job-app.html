@@ -75,7 +75,7 @@
 	{{#each jobs}}
 	<div>
 		<a href="{{link}}">{{title}} at {{company}}</a>
-			<button class="btn btn-xs btn-default delete" data-id={{_id}}>Delete</button>
+			<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
 		<!-- on click, opens up a modal box which displays a form -->
 		<button class="btn btn-xs btn-primary pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal">Pursue</button>
 	</div>
@@ -99,7 +99,6 @@
 			<input name='contact_email' type="text" placeholder="Contact Email"/>
 			<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
 			<input name='requirements' type="text" placeholder="Requirements"/><br>
-			<input class="update" type="button" value="Update"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
