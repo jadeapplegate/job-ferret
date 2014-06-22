@@ -35,9 +35,10 @@ if (Meteor.isClient) {
   Template.addJobModal.events({
     'click #addJob' : function(event, template) {
       event.preventDefault();
-      console.log("meow");
+      var linkText = template.find("input[name=link]").value;
+      var link = /http/.test(linkText) ? linkText : "http://" + linkText;
       var data = {
-        link: template.find("input[name=link]").value,
+        link: link,
         title: template.find("input[name=title]").value,
         company: template.find("input[name=company]").value,
         pursuing: false
