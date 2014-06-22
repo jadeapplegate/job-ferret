@@ -15,28 +15,26 @@
 
 	<template name="navbar">
 		<div class="navbar navbar-inverse navbar-fixed-top">
-		       <div class="navbar-inner">
-		         <div class="container">
-		           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-		             <span class="icon-bar"></span>
-		             <span class="icon-bar"></span>
-		             <span class="icon-bar"></span>
-		           </button>
-		           <a class="brand" href="#">Job App</a>
-		           <div class="nav-collapse collapse">
-		             <ul class="nav">
-		               <li class="active"><a href="#">Home</a></li>
-		               <li><a href="#about">About</a></li>
-		               <li><a href="#contact">Contact</a></li>
-		               <li><a href="#signOut">Sign Out</a></li>
-		             </ul>
-		           </div>
-		         </div>
-		       </div>
-		     </div>
-		     <div class="container">
-		   </div>
-	  </template>
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+		      </button>
+		      <a class="brand" href="#">Job App</a>
+		      <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+		          <li><a href="#signOut">Sign Out</a></li>
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</template>
 
 <!-- on click, opens up a modal box which displays a form -->
 <template name="addJobButton">
@@ -57,8 +55,9 @@
         <h4 class="modal-title" id="addJobModal">Add Job</h4>
       </div>
       <div class="modal-body">
-				  <input name='company' type="text" autofocus="true" placeholder="Company"/>
-				  <input name='title' type="text" placeholder="Position Title"/><br>
+      	<br>
+				  <input name='company' type="text" placeholder="Company"/>
+				  <input name='title' type="text" placeholder="Position Title"/>
 				  <input name='link' type="text" placeholder="Link"/>
       </div>
       <div class="modal-footer">
@@ -74,10 +73,12 @@
 <template name="interestList">
 	<h1>All Jobs of Interest</h1>
 	{{#each jobs}}
-		<h2><a href="{{link}}">{{title}} at {{company}}</a>
+	<h2>
+		<a href="{{link}}">{{title}} at {{company}}</a>
 			<button class="btn btn-default btn-lg delete" data-id={{_id}}>Delete</button>
 		<!-- on click, opens up a modal box which displays a form -->
-	<button class="btn btn-primary btn-lg pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal">Pursue</button></h2>
+		<button class="btn btn-primary btn-lg pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal">Pursue</button>
+	</h2>
 	{{/each}}
 </template>
 
