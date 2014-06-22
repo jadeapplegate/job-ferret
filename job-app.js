@@ -24,11 +24,10 @@ if (Meteor.isClient) {
       var jobId = $(event.target).attr('data-id');
       Jobs.remove({_id: jobId});
     },
-    'click .pursue' : function(event, template) {
+    'click .pursue_job': function(event, template){
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
       Jobs.update({_id: jobId}, {$set: {pursuing: true}})
-      console.log(Jobs.findOne({}))
     }
   });
 
