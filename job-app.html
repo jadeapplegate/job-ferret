@@ -10,8 +10,10 @@
 	{{>addJobModal}}
 	{{>interestList}}
 	{{>pursuingList}}
+	{{>jobOverview}}
 </body>
 
+<!-- responsive, fixed navbar at top of page -->
 	<template name="navbar">
 		<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -35,7 +37,7 @@
 		</div>
 	</template>
 
-<!-- on click, opens up a modal box which displays a form -->
+<!-- on click, opens up a modal box which displays a form to add a new job -->
 <template name="addJobButton">
 	<div class="addJob">
 		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addJobModal">
@@ -44,7 +46,7 @@
 	</div>
 </template>
 
-<!-- modal for adding job of interest -->
+<!-- modal with form for adding job of interest -->
 <template name="addJobModal">
 <div class="modal fade" id="addJobModal" tabindex="-1" role="dialog" aria-labelledby="addJobModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -83,10 +85,10 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Pursue Job</h4>
+		        <h4 class="modal-title">Add More Information About The Position</h4>
 		      </div>
 		      <div class="modal-body">
-			  	  <input name='link' type="text" placeholder="Link" value={{link}} />
+			  	  <input name='link' type="text" class="span6 input-large" placeholder="Link" value={{link}} />
 						<input name='title' type="text" placeholder="Position Title" value={{title}} />
 						<input name='company' type="text" placeholder="Company" value={{company}} />
 						<input name='contact_name' type="text" placeholder="Contact Name"/>
@@ -124,11 +126,10 @@
 			      </div>	
 						<div class="requirements_checkbox">
 							 <h5>Application Requirements (select all that apply)</h5>
-								<input type="checkbox" name="resume" value="resume" checked>Resume<br>
-								<input type="checkbox" name="cover_letter" value="cover_letter">Cover Letter<br>
-								<input type="checkbox" name="portfolio" value="portfolio">Portfolio Link<br>
-								<input type="checkbox" name="code_sample" value="code_sample">Code Sample<br>
-								<input type="checkbox" name="references" value="references">References<br><br>
+								<input type="checkbox" name="resume">Resume<br>
+								<input type="checkbox" name="cover_letter">Cover Letter<br>
+								<input type="checkbox" name="portfolio">Portfolio Link<br>
+								<input type="checkbox" name="code_sample">Code Sample<br>
 			      </div>
 			      <div class="modal-footer">
 		  	      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -141,7 +142,7 @@
 	{{/each}}
 </template>
 
-<!-- append list of all jobs pursuing -->
+<!-- appends list of all jobs pursuing -->
 <template name="pursuingList">
 	<h3>All Pursuing</h3>
 	{{#each jobs}}
@@ -153,6 +154,45 @@
 	{{/each}}
 </template>
 
+<!-- hide other page elements and display the following job overview -->
+<template name="jobOverview">
+	<!-- status bar???????? -->
+
+	<h3>Position Information</h3>
+		<ul>
+			<li>{{job.title}} at {{job.company}}</li>
+			<li><a href="{{link}}">Link to job posting</a></li>
+			<li>{{job.min_salary}} to {{job.max_salary}}</li>
+			<li> Requirements: </li>  
+		 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
+		</ul>
+
+	<h3>Next Steps</h3>
+	<!-- mini todo list, with option to strikethrough or checkoff -->
+
+	<h3>Contacts</h3>
+		<!-- display all contacts with phone/email here -->
+		<ul>
+			<li>{{job.contact_name}}: {{job.contact_email}} {{job.contact_phone}}</li>
+		</ul>
+
+	<h3>Contact Log</h3>
+	<!-- date picker(or today's date?) with text field-->
+	<!-- display all past contacts -->
+
+	<h3>Notes</h3>
+	<!-- text field with save option, appends to page below the box -->
+		<input name='note' type="text" placeholder="Add note here"/>
+		<button type="button" class="add_note btn btn-primary">Add Note</button>
+			{{#each job.note}}
+			<ul>
+				<li>{{job.note}}</li>
+			</ul>
+			{{/each}}
+
+</template>
+
+<!-- sign in with Github -->
 <template name="githubOauth">
 	{{#if currentUser}}
 		<script>console.log(currentUser)</script>

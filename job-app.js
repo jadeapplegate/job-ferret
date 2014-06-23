@@ -1,4 +1,6 @@
 Jobs = new Meteor.Collection("jobs");
+// Jobs.remove({});
+
 
 if (Meteor.isClient) {
 
@@ -31,7 +33,6 @@ if (Meteor.isClient) {
         cover_letter: template.find("input[name=cover_letter]").value,
         portfolio: template.find("input[name=portfolio]").value,
         code_sample: template.find("input[name=code_sample]").value,
-        references: template.find("input[name=references]").value,
         pursuing: true,
       };
       console.info(data);
@@ -47,9 +48,6 @@ if (Meteor.isClient) {
       var maxSalaryDropdown = $(event.target).text();
       $('#max_salary').val(maxSalaryDropdown);
     }
-
-
-
   });
 
   Template.addJobModal.events({
@@ -85,8 +83,23 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.jobOverview.job = function(){
+    var jobItem = Jobs.find({}, {limit: 1}).fetch()[0];
+    return jobItem;
+ 
+    Template.jobOverview.events({
+    'click .add_note' : function(event, template){
+      event.preventDefault();
+      var jobId = $(event.target).attr('data-id');
+      var data = {
+        note: template.find("input[name=note]").value,
+      };
+      console.log(data);
+      Jobs.insert(data)
+      } 
+    });
+  }
 }
-
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
