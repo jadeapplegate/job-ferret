@@ -1,6 +1,7 @@
 Jobs = new Meteor.Collection("jobs");
 // Jobs.remove({});
 Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:true, min_salary: "$80,000"});
+Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:false, min_salary: "$80,000"});
 
 if (Meteor.isClient) {
 
@@ -19,6 +20,7 @@ if (Meteor.isClient) {
       var jobId = $(event.target).attr('data-id');
       var linkText = template.find("input[name=link]").value;
       var link = /http/.test(linkText) ? linkText : "http://" + linkText;
+
       var data = {
         link: link,
         //???same as below??? dom node/jquery object------- title: $(template.find("input[name=title]")).val(),
@@ -29,13 +31,13 @@ if (Meteor.isClient) {
         contact_phone: template.find("input[name=contact_phone]").value,
         min_salary: template.find("input[name=min_salary]").value,
         max_salary: template.find("input[name=max_salary]").value,
-        resume: template.find("input[name=resume]").value,
-        cover_letter: template.find("input[name=cover_letter]").value,
-        portfolio: template.find("input[name=portfolio]").value,
-        code_sample: template.find("input[name=code_sample]").value,
+        resume: $(template.find("input[name=resume]")).is(':checked'),
+        cover_letter: $(template.find("input[name=cover_letter]")).is(':checked'),
+        portfolio: $(template.find("input[name=portfolio]")).is(':checked'),
+        code_sample: $(template.find("input[name=code_sample]")).is(':checked'),
         pursuing: true,
       };
-      console.info(data);
+      console.info(data); 
       Jobs.update({_id: jobId}, {$set: data})
     },
     'click .min_salary_dropdown li a' : function(event, template) {
