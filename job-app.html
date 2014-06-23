@@ -159,22 +159,22 @@
 	<!-- status bar???????? -->
 
 	<h3>Position Information</h3>
-		<ul>
-			<li>{{job.title}} at {{job.company}}</li>
-			<li><a href="{{link}}">Link to job posting</a></li>
-			<li>{{job.min_salary}} to {{job.max_salary}}</li>
-			<li> Requirements: </li>  
-		 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
-		</ul>
+	<ul>
+		<li>{{job.title}} at {{job.company}}</li>
+		<li><a href="{{link}}">Link to job posting</a></li>
+		<li>{{job.min_salary}} to {{job.max_salary}}</li>
+		<li> Requirements: </li>  
+	 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
+	</ul>
 
 	<h3>Next Steps</h3>
 	<!-- mini todo list, with option to strikethrough or checkoff -->
 
 	<h3>Contacts</h3>
-		<!-- display all contacts with phone/email here -->
-		<ul>
-			<li>{{job.contact_name}}: {{job.contact_email}} {{job.contact_phone}}</li>
-		</ul>
+	<!-- display all contacts with phone/email here -->
+	<ul>
+		<li>{{job.contact_name}}: {{job.contact_email}} {{job.contact_phone}}</li>
+	</ul>
 
 	<h3>Contact Log</h3>
 	<!-- date picker(or today's date?) with text field-->
@@ -182,13 +182,13 @@
 
 	<h3>Notes</h3>
 	<!-- text field with save option, appends to page below the box -->
-		<input name='note' type="text" placeholder="Add note here"/>
-		<button type="button" class="add_note btn btn-primary">Add Note</button>
-			{{#each job.note}}
-			<ul>
-				<li>{{job.note}}</li>
-			</ul>
-			{{/each}}
+	<input name='note' type="text" placeholder="Add note here"/>
+	<button type="button" data-id={{job._id}} class="add_note btn btn-primary">Add Note</button>
+	<ul>
+		{{#each job.note}}	
+			<li>{{this}}</li>
+		{{/each}}
+	</ul>
 
 </template>
 

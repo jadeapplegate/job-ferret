@@ -1,6 +1,6 @@
 Jobs = new Meteor.Collection("jobs");
 // Jobs.remove({});
-
+Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:true, min_salary: "$80,000"});
 
 if (Meteor.isClient) {
 
@@ -86,8 +86,9 @@ if (Meteor.isClient) {
   Template.jobOverview.job = function(){
     var jobItem = Jobs.find({}, {limit: 1}).fetch()[0];
     return jobItem;
- 
-    Template.jobOverview.events({
+  }
+
+  Template.jobOverview.events({
     'click .add_note' : function(event, template){
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
@@ -95,10 +96,10 @@ if (Meteor.isClient) {
         note: template.find("input[name=note]").value,
       };
       console.log(data);
-      Jobs.insert(data)
-      } 
-    });
-  }
+      console.log(jobId);
+      Jobs.update({_id: jobId}, {$push: data})
+    } 
+  });
 }
 
 if (Meteor.isServer) {
