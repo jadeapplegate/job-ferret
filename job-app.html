@@ -6,12 +6,15 @@
 <!-- display these templates -->
 	<!-- 	{{>githubOauth}} -->
 	{{>navbar}}
+
 	<div id="dashboard">
 		{{>addJobButton}}
 		{{>addJobModal}}
 		{{>interestList}}
 		{{>pursuingList}}
+		{{>bookmarklet}}
 	</div>
+
 	{{>jobOverview}}
 </body>
 
@@ -37,6 +40,13 @@
 		    </div>
 		  </div>
 		</div>
+	</template>
+
+	<template name="bookmarklet">
+		<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet.js';}})();">View Sources</a>
+
+		<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet2.js';}})();">Bookmark Job</a>
+
 	</template>
 
 <!-- on click, opens up a modal box which displays a form to add a new job -->
