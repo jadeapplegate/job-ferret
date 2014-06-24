@@ -1,7 +1,8 @@
 Jobs = new Meteor.Collection("jobs");
-// Jobs.remove({});
-Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:true, min_salary: "$80,000"});
-Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:false, min_salary: "$80,000"});
+
+//Jobs.remove({});
+// Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:true, min_salary: "$80,000"});
+// Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:false, min_salary: "$80,000"});
 
 if (Meteor.isClient) {
 
@@ -9,6 +10,8 @@ if (Meteor.isClient) {
     return Jobs.find({pursuing: false});
   };
  
+
+
   Template.interestList.events({
     'click .delete' : function(event, template) {
       event.preventDefault();
@@ -100,7 +103,21 @@ if (Meteor.isClient) {
       console.log(data);
       console.log(jobId);
       Jobs.update({_id: jobId}, {$push: data})
-    } 
+    }, 
+    'click .add_next_step' : function(event, template){
+      event.preventDefault();
+      var jobId = $(event.target).attr('data-id');
+      
+      var text = template.find("input[name=next_step]").value;
+      
+      var data = {
+        nextStep: {text: text}
+      };
+      console.log(data);
+      console.log(jobId);
+      Jobs.update({_id: jobId}, {$push: data})
+    }
+
   });
 }
 
