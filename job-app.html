@@ -161,12 +161,13 @@
 	<h3>Position Information</h3>
 	<ul>
 		<li>{{job.title}} at {{job.company}}</li>
-		<li><a href="{{link}}">Link to job posting</a></li>
+		<li><a href="{{job.link}}">Link to job posting</a></li>
 		<li>{{job.contact_name}}: {{job.contact_email}} {{job.contact_phone}}</li>
-		<li>{{job.min_salary}} to {{job.max_salary}}</li>
+		<li> Salary Range: {{job.min_salary}} to {{job.max_salary}}</li>
 		<li> Requirements: </li>  
 	 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
 	 <!-- 4 if statements for each one -->
+
 	</ul>
 
 	<h3>Next Steps</h3>
