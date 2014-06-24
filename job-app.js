@@ -81,10 +81,21 @@ if (Meteor.isClient) {
       var jobId = $(event.target).attr('data-id');
       Jobs.remove({_id: jobId});
     },
-    'click .update' : function(event, template) {
+    'click .details' : function(event, template) {
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
+      $('#details-'+jobId).removeClass('hidden');
+      $('#details-'+jobId).show();
+      $('#dashboard').hide();
       console.log("update clicked");
+    }
+  });
+
+  Template.navbar.events({
+    'click .brand' : function(event, template){
+      event.preventDefault();
+      $('#dashboard').show();
+      $('.job-details').hide();
     }
   });
 
@@ -98,7 +109,7 @@ if (Meteor.isClient) {
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
       var data = {
-        note: template.find("input[name=note]").value,
+        note: template.find("#details-" + jobId + " input[name=note]").value,
       };
       console.log(data);
       console.log(jobId);
@@ -108,7 +119,7 @@ if (Meteor.isClient) {
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');
       
-      var text = template.find("input[name=next_step]").value;
+      var text = template.find("#details-" + jobId + " input[name=next_step]").value;
       
       var data = {
         nextStep: {text: text}
@@ -117,7 +128,6 @@ if (Meteor.isClient) {
       console.log(jobId);
       Jobs.update({_id: jobId}, {$push: data})
     }
-
   });
 }
 

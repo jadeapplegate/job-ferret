@@ -6,10 +6,12 @@
 <!-- display these templates -->
 	<!-- 	{{>githubOauth}} -->
 	{{>navbar}}
-	{{>addJobButton}}
-	{{>addJobModal}}
-	{{>interestList}}
-	{{>pursuingList}}
+	<div id="dashboard">
+		{{>addJobButton}}
+		{{>addJobModal}}
+		{{>interestList}}
+		{{>pursuingList}}
+	</div>
 	{{>jobOverview}}
 </body>
 
@@ -149,7 +151,7 @@
 		<div>
 			<a href="{{link}}">{{title}} at {{company}}</a>
 			<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
-			<button class="btn btn-primary btn-lg update" data-id={{_id}}>Details</button>
+			<button class="btn btn-primary btn-lg details" data-id={{_id}}>Details</button>
 		</div>
 	{{/each}}
 </template>
@@ -159,35 +161,37 @@
 	<!-- status bar???????? -->
 
 	{{#each jobs}}
-		<h3>Position Information</h3>
-		<ul>
-			<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
-			<li>Contact: {{this.contact_name}}: {{this.contact_email}}, {{this.contact_phone}}</li>
-			<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
-			<li> Requirements: </li>  
-		 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
-		 <!-- 4 if statements for each one -->
+		<div class="job-details hidden" id="details-{{this._id}}">
+			<h3>Position Information</h3>
+			<ul>
+				<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
+				<li>Contact: {{this.contact_name}}: {{this.contact_email}}, {{this.contact_phone}}</li>
+				<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
+				<li> Requirements: </li>  
+			 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
+			 <!-- 4 if statements for each one -->
 
-		</ul>
+			</ul>
 
-		<h3>Next Steps</h3>
-		<input name='next_step' type="text" placeholder="Add next step"/>
-		<button type="button" data-id={{this._id}} class="add_next_step btn btn-primary">Add Next Step</button>
-		<ul>
-			{{#each this.nextStep}}	
-				<li>{{this.text}}</li> 
-			{{/each}}
-		</ul>
+			<h3>Next Steps</h3>
+			<input name='next_step' type="text" placeholder="Add next step"/>
+			<button type="button" data-id={{this._id}} class="add_next_step btn btn-primary">Add Next Step</button>
+			<ul>
+				{{#each this.nextStep}}	
+					<li>{{this.text}}</li> 
+				{{/each}}
+			</ul>
 
-		<h3>Notes</h3>
-		<!-- text field with save option, appends to page below the box -->
-		<input name='note' type="text" placeholder="Add note here"/>
-		<button type="button" data-id={{this._id}} class="add_note btn btn-primary">Add Note</button>
-		<ul>
-			{{#each this.note}}	
-				<li>{{this}}</li>
-			{{/each}}
-		</ul>
+			<h3>Notes</h3>
+			<!-- text field with save option, appends to page below the box -->
+			<input name='note' type="text" placeholder="Add note here"/>
+			<button type="button" data-id={{this._id}} class="add_note btn btn-primary">Add Note</button>
+			<ul>
+				{{#each this.note}}	
+					<li>{{this}}</li>
+				{{/each}}
+			</ul>
+		</div>
 	{{/each}}
 </template>
 
