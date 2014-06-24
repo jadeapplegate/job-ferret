@@ -8,6 +8,7 @@
 	{{>navbar}}
 
 	<div id="dashboard">
+		{{>jumbotron}}
 		{{>addJobButton}}
 		{{>addJobModal}}
 		{{>interestList}}
@@ -42,12 +43,24 @@
 		</div>
 	</template>
 
-	<template name="bookmarklet">
-		<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet.js';}})();">View Sources</a>
+<template name="jumbotron">
+<div class="container">
+   <div class="jumbotron">
+      <h1>Welcome to landing page!</h1>
+      <p>This is an example for jumbotron.</p>
+      <p><a class="btn btn-primary btn-lg" role="button">
+         Learn more</a>
+      </p>
+   </div>
+</div>
+</template>
 
-		<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet2.js';}})();">Bookmark Job</a>
+<template name="bookmarklet">
+	<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet.js';}})();">View Sources</a>
 
-	</template>
+	<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet2.js';}})();">Bookmark Job</a>
+
+</template>
 
 <!-- on click, opens up a modal box which displays a form to add a new job -->
 <template name="addJobButton">
