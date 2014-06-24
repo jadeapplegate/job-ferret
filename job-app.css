@@ -12,3 +12,10 @@
 .requirements_checkbox {
 	margin-bottom: 10px;
 }
+
+.jumbotron {
+	margin-top: 80px;
+	background-color: lightgray;
+	padding: 40px;
+	border-radius: 5px;
+}
