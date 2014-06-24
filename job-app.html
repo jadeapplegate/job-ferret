@@ -97,7 +97,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Add More Information About The Position</h4>
+		        <h4 class="modal-title">Add More Information</h4>
 		      </div>
 		      <div class="modal-body">
 			  	  <input name='link' type="text" class="span6 input-large" placeholder="Link" value={{link}} />
@@ -166,6 +166,13 @@
 	{{/each}}
 </template>
 
+
+<template name="position_requirements">
+  <li> Requirements: 
+	{{format_position_requirements this }}
+	</li>  
+</template>
+
 <!-- hide other page elements and display the following job overview -->
 <template name="jobOverview">
 	<!-- status bar???????? -->
@@ -177,10 +184,9 @@
 				<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
 				<li>Contact: {{this.contact_name}}: {{this.contact_email}}, {{this.contact_phone}}</li>
 				<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
-				<li> Requirements: </li>  
 			 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
 			 <!-- 4 if statements for each one -->
-
+			 {{> position_requirements}}
 			</ul>
 
 			<h3>Next Steps</h3>

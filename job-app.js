@@ -1,16 +1,32 @@
 Jobs = new Meteor.Collection("jobs");
 
+
+UI.registerHelper('format_position_requirements', function(job) {
+  if(job)
+  {
+    var requirements = [];
+    if(job.resume) { requirements.push('Resume'); }
+    if(job.cover_letter) { requirements.push('Cover Letter'); }
+    if(job.portfolio) { requirements.push('Portfolio'); }
+    if(job.code_sample) { requirements.push('Code Sample'); }
+
+    if(requirements.length < 1)
+    {
+      requirements.push("None");
+    }
+    return requirements.join(', ');
+  }
+});
+
 // Jobs.remove({});
 // Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:true, min_salary: "$80,000"});
-// Jobs.insert({title: 'engineer', company: 'twitter', link: 'http://twitter.com/jobs', pursuing:false, min_salary: "$80,000"});
+// Jobs.insert({title: 'engineer', company: 'box', link: 'http://twitter.com/jobs', pursuing:false, min_salary: "$80,000"});
 
 if (Meteor.isClient) {
 
   Template.interestList.jobs = function () {
     return Jobs.find({pursuing: false});
   };
- 
-
 
   Template.interestList.events({
     'click .delete' : function(event, template) {
@@ -103,6 +119,7 @@ if (Meteor.isClient) {
     var jobs = Jobs.find({pursuing:true}).fetch();
     return jobs;
   }
+
 
   Template.jobOverview.events({
     'click .add_note' : function(event, template){
