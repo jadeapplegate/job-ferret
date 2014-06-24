@@ -122,6 +122,11 @@ if (Meteor.isClient) {
 
 
   Template.jobOverview.events({
+    'click .back' : function(event, template){
+      event.preventDefault();
+      $('#dashboard').show();
+      $('.job-details').hide();
+    },
     'click .add_note' : function(event, template){
       event.preventDefault();
       var jobId = $(event.target).attr('data-id');

@@ -176,6 +176,7 @@
 <!-- hide other page elements and display the following job overview -->
 <template name="jobOverview">
 	<!-- status bar???????? -->
+	<button class="btn btn-primary btn-lg back" data-id={{_id}}>Back</button>
 
 	{{#each jobs}}
 		<div class="job-details hidden" id="details-{{this._id}}">
