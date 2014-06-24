@@ -88,9 +88,9 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.jobOverview.job = function(){
-    var jobItem = Jobs.find({}, {limit: 1}).fetch()[0];
-    return jobItem;
+  Template.jobOverview.jobs = function(){
+    var jobs = Jobs.find({pursuing:true}).fetch();
+    return jobs;
   }
 
   Template.jobOverview.events({
