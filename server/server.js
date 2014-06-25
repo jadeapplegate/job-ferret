@@ -4,7 +4,6 @@ Router.map(function () {
     action: function(){
       console.log('################################################');
       console.log(this.request.method);
-      console.log(this.request.headers);
       console.log('this.params.id: ' + this.params.id);
 
       console.log('------------------------------');
@@ -18,26 +17,13 @@ Router.map(function () {
 
       if (this.request.method == 'GET') {
         // LIST
-        Statistics.update({_id: "configuration"},{$inc:{
-          total_count: 1,
-          list_count: 1
-        }});
-        this.response.end(JSON.stringify(
-          Posts.find().fetch()
-        ));
+
       }else if (this.request.method == 'POST') {
         // INSERT
-        Statistics.update({_id: "configuration"},{$inc:{
-          total_count: 1,
-          insert_count: 1
-        }});
-        this.response.end(JSON.stringify(
-          Posts.insert(this.request.body)
-        ));
-      }else if (this.request.method == 'OPTIONS') {
-        // OPTIONS
-        this.response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, DELETE, OPTIONS");
-        this.response.end("OPTIONS Response");
+        Jobs.insert({title: this.request.body.title, company: this.request.body.company, link: this.request.body.link, pursuing: false});
+        // this.response.end(JSON.stringify(
+        //   Posts.insert(this.request.body)
+        // ));
       }
     }
   });
