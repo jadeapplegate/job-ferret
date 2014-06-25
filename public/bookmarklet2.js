@@ -22,7 +22,10 @@
     // on click display modal which has add job form (three fields)
     // on save, send that information, along with user id---> ajax post
     // append to user's page
-    alert('aaaaa');
+    
+    // var html = 'hello';
+    var html = '<style>#bookmarklet-modal-job-ferret{ padding-bottom:65%;padding-top:35%;position:absolute; width:100%; top:0%; background-color:rgba(32,10,24,0.5);}#bookmarklet-modal-job-ferret-content{background-color:white; width:70%;margin-left:auto;margin-right:auto;padding:100px;}</style><div id="bookmarklet-modal-job-ferret"><div id="bookmarklet-modal-job-ferret-content"><p> Save this job to your jobs list</p><input name="company" type="text" placeholder="Company"/><input name="title" type="text" placeholder="Position Title"/><input name="link" type="text" placeholder="Link"/><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button><button id="addJob" type="button" class="btn btn-primary" data-dismiss="modal">Save</button></div></div>';
+    $("body").append(html);
 	}
 
 })();
