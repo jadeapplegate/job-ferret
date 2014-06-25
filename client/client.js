@@ -92,9 +92,9 @@ Template.pursuingList.events({
   'click .details' : function(event, template) {
     event.preventDefault();
     var jobId = $(event.target).attr('data-id');
-    $('#details-'+jobId).removeClass('hidden');
-    $('#details-'+jobId).show();
+    $('#details-'+jobId).removeClass('hidden').show();
     $('#dashboard').hide();
+    $('.back').removeClass('hidden').show();
     console.log("update clicked");
   }
 });
@@ -104,6 +104,7 @@ Template.navbar.events({
     event.preventDefault();
     $('#dashboard').show();
     $('.job-details').hide();
+    $('.back').hide();
   }
 });
 
@@ -118,6 +119,7 @@ Template.jobOverview.events({
     event.preventDefault();
     $('#dashboard').show();
     $('.job-details').hide();
+    $('.back').hide();
   },
   'click .add_note' : function(event, template){
     event.preventDefault();
@@ -125,8 +127,6 @@ Template.jobOverview.events({
     var data = {
       note: template.find("#details-" + jobId + " input[name=note]").value,
     };
-    console.log(data);
-    console.log(jobId);
     Jobs.update({_id: jobId}, {$push: data})
   }, 
   'click .add_next_step' : function(event, template){
@@ -138,8 +138,6 @@ Template.jobOverview.events({
     var data = {
       nextStep: {text: text}
     };
-    console.log(data);
-    console.log(jobId);
     Jobs.update({_id: jobId}, {$push: data})
   }
 });
