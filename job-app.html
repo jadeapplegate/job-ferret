@@ -59,21 +59,11 @@
 <!-- sign in with Github -->
 <template name="githubOauth">
 	{{> loginButtons align="right"}}
-	{{#if currentUser}}
-		<script>console.log(currentUser)</script>
-	{{else}}
-	<script>console.log(currentUser)</script>
-	{{/if}}
 </template>
 
 
 <template name="bookmarklet">
-<!-- 	<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet.js';}})();">View Sources</a> -->
-
-<!-- 	<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet2.js';}})();">Bookmark Job</a>
- -->	
- <a href="javascript: (function(rand){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://localhost:3000/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000));">Bookmark Job</a>
-
+ <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://final-project-job-app.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '2fubW8hchuLwcpeKs');">Bookmark Job</a>
 </template>
 
 

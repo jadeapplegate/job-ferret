@@ -1,3 +1,8 @@
+Jobs = new Meteor.Collection("jobs");
+
+// Meteor.subscribe('Jobs', subsargs) //here is where you can pass arguments
+Meteor.subscribe('Jobs');
+
 UI.registerHelper('format_position_requirements', function(job) {
   if(job)
   {
@@ -70,7 +75,7 @@ Template.addJobModal.events({
     var link = /http/.test(linkText) ? linkText : "http://" + linkText;
     var data = {
       link: link,
-      //???same as below??? dom node/jquery object------- title: $(template.find("input[name=title]")).val(),
+      userId: Meteor.userId(),
       title: template.find("input[name=title]").value,
       company: template.find("input[name=company]").value,
       pursuing: false
