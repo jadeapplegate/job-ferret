@@ -33,7 +33,7 @@
       sendData();
     });
     var sendData = function() {
-      $.post( "ajax/test.html", function( data ) {
+      $.post( "api/", function( data ) {
         alert('success');
       });
 

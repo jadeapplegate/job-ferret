@@ -9,3 +9,4 @@ insecure
 bootstrap
 accounts-github
 accounts-ui
+iron-router
