@@ -105,7 +105,14 @@ Template.navbar.events({
     $('#dashboard').show();
     $('.job-details').hide();
     $('.back').hide();
-  }
+  },
+
+  'click #navbar-sign-out': function() {                                                                          // 6
+    Meteor.logout(function () {                                                                                        // 7
+      loginButtonsSession.closeDropdown();                                                                             // 8
+    });                                                                                                                // 9
+  }                                                                                                                    // 10
+
 });
 
 Template.jobOverview.jobs = function(){
