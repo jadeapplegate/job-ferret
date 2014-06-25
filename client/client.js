@@ -107,12 +107,11 @@ Template.navbar.events({
     $('.back').hide();
   },
 
-  'click #navbar-sign-out': function() {                                                                          // 6
-    Meteor.logout(function () {                                                                                        // 7
-      loginButtonsSession.closeDropdown();                                                                             // 8
-    });                                                                                                                // 9
-  }                                                                                                                    // 10
-
+// when signout in navbar clicked, rely on functionality from accounts-ui for signout
+  'click #navbar-sign-out': function() {                                                                          
+    Meteor.logout(function () {                                                                               
+    });      
+  }                                                                                                                    
 });
 
 Template.jobOverview.jobs = function(){
