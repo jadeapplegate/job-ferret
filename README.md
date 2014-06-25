@@ -1,7 +1,9 @@
 
 ##Summary: 
 
-A Job Search Management Tool built using Meteor: 0.8.1.3
+A Job Search Management Tool built using Meteor: 0.8.1.3. App also includes a bookmarklet which allows a user to save jobs to their account from another webpage. 
+
+Give the app a try at: <ADD DEPLOYED LINK HERE>
 
 ##Installation Instructions:
 To install this project locally, do the following:
@@ -13,10 +15,10 @@ To install this project locally, do the following:
 Install packages listed below (if you run into any issues, run `mtr update` and then try to install that package again)
 
 ##Meteor Packages:
-* accounts-ui `meteor add accounts-ui`
-* github `meteor add github`
-* bootstrap `meteor add bootstrap`
-* iron-router `mrt add iron-router`
+* accounts-ui: `meteor add accounts-ui`
+* github oauth: `meteor add github`
+* bootstrap: `meteor add bootstrap`
+* iron-router: `mrt add iron-router`
 
 ##Future improvements:
 
@@ -27,7 +29,7 @@ See future implementation section on this [Trello](https://trello.com/b/wYDd7Bn2
 * refactoring
 
 ##Get In Touch:
-Issues? Questions? Want to contribute? Contact the author at <jade.applegate@gmail.com>
+Issues? Questions? Want to contribute? Contact the author at <jade.applegate@gmail.com>, or sumbit a pull request!
 
 
 
