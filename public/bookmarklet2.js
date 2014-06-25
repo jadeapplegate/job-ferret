@@ -25,21 +25,23 @@
     // append to user's page
     
     // var html = 'hello';
-    var html = '<style>#bookmarklet-modal-job-ferret{ z-index:10000;padding-bottom:65%;padding-top:35%;position:absolute; width:100%; top:0%; background-color:rgba(32,10,24,0.5);}#bookmarklet-modal-job-ferret-content{background-color:white; width:70%;margin-left:auto;margin-right:auto;padding:100px;}</style><div id="bookmarklet-modal-job-ferret"><div id="bookmarklet-modal-job-ferret-content"><p> Save this job to your jobs list</p><input id="bookmarklet-modal-job-ferret-company" type="text" placeholder="Company"/><input id="bookmarklet-modal-job-ferret-title" type="text" placeholder="Position Title"/><input id="bookmarklet-modal-job-ferret-link" type="text" placeholder="Link"/><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button><button id="bookmarklet-add-job" type="button" class="btn btn-primary" data-dismiss="modal">Save</button></div></div>';
+    var html = '<style>#bookmarklet-modal-job-ferret{ z-index:10000;padding-bottom:65%;padding-top:35%;position:absolute; width:100%; top:0%; background-color:rgba(32,10,24,0.5);}#bookmarklet-modal-job-ferret-content{background-color:white; width:70%;margin-left:auto;margin-right:auto;padding:100px;}</style><div id="bookmarklet-modal-job-ferret"><div id="bookmarklet-modal-job-ferret-content"><p> Save this job to your jobs list</p><input id="bookmarklet-modal-job-ferret-company" type="text" placeholder="Company"/><input id="bookmarklet-modal-job-ferret-title" type="text" placeholder="Position Title"/><input id="bookmarklet-modal-job-ferret-link" type="text" placeholder="Link"/><button type="button" class="btn btn-default" id="bookmarklet-modal-job-ferret-cancel">Cancel</button><button id="bookmarklet-add-job" type="button" class="btn btn-primary">Save</button></div></div>';
     $("body").append(html);
 
 
     $('#bookmarklet-add-job').on('click', function(){
       sendData();
+      $('#bookmarklet-modal-job-ferret').remove(); //should really put this in the function on line 38 as a callback rather than here
     });
     var sendData = function() {
       //http://whatever.meteor.com/api/
-      $.post( "http://localhost:3000/api/", {title: $("#bookmarklet-modal-job-ferret-title").val(), company: $("#bookmarklet-modal-job-ferret-company").val(), link: $("#bookmarklet-modal-job-ferret-link").val()}, function( data ) {
-        alert('success');
+      $.post( "http://localhost:3000/api/", {title: $("#bookmarklet-modal-job-ferret-title").val(), company: $("#bookmarklet-modal-job-ferret-company").val(), link: $("#bookmarklet-modal-job-ferret-link").val()}, function() { 
       });
-
     };
-
+    // .on click for Cancel
+    $('#bookmarklet-modal-job-ferret-cancel').on('click', function(){
+    	$('#bookmarklet-modal-job-ferret').remove(); //need to reset other things other than clearing the modal 
+    });
 	};
 
 })();
