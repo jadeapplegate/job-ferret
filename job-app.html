@@ -4,19 +4,21 @@
 
 <body>
 <!-- display these templates -->
-	<!-- 	{{>githubOauth}} -->
 	{{>navbar}}
+	{{#if currentUser}}
+		<div id="dashboard">
+			{{>addJobButton}}
+			{{>addJobModal}}
+			{{>interestList}}
+			{{>pursuingList}}
+			{{>bookmarklet}}
+		</div>
+		{{>jobOverview}}
+		{{else}}
+			{{>jumbotron}}
+	{{/if}}
 
-	<div id="dashboard">
-		{{>jumbotron}}
-		{{>addJobButton}}
-		{{>addJobModal}}
-		{{>interestList}}
-		{{>pursuingList}}
-		{{>bookmarklet}}
-	</div>
 
-	{{>jobOverview}}
 </body>
 
 <!-- responsive, fixed navbar at top of page -->
@@ -48,12 +50,22 @@
    <div class="jumbotron">
       <h1>Welcome to the app! (only display if not signed in)</h1>
       <p>(Write something here to describe the app)</p>
-      <p><a class="btn btn-primary btn-lg" role="button">
-         Learn more</a>	
+      <p>	{{>githubOauth}}
       </p>
    </div>
 </div>
 </template>
+
+<!-- sign in with Github -->
+<template name="githubOauth">
+	{{> loginButtons align="right"}}
+	{{#if currentUser}}
+		<script>console.log(currentUser)</script>
+	{{else}}
+	<script>console.log(currentUser)</script>
+	{{/if}}
+</template>
+
 
 <template name="bookmarklet">
 <!-- 	<a href="javascript: (function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://jades-job-app.meteor.com/bookmarklet.js';}})();">View Sources</a> -->
@@ -228,12 +240,3 @@
 	{{/each}}
 </template>
 
-<!-- sign in with Github -->
-<template name="githubOauth">
-	{{#if currentUser}}
-		<script>console.log(currentUser)</script>
-	{{else}}
-	<script>console.log(currentUser)</script>
-		{{> loginButtons align="right"}}
-	{{/if}}
-</template>

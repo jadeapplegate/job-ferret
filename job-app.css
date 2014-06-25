@@ -19,3 +19,11 @@
 	padding: 40px;
 	border-radius: 5px;
 }
+
+body {
+	background-color: red;
+}
+
+.navbar {
+/*	margin-bottom: 0px;*/
+}
