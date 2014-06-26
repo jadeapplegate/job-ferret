@@ -22,7 +22,7 @@
 							{{>pursuingList}}
 						</div>
 						<div class="right-panel col-md-1">
-											{{>bookmarklet}}
+								{{>bookmarklet}}
 					  </div>
 					</div>
 				</div>
@@ -213,15 +213,15 @@
 <!-- hide other page elements and display the following job overview -->
 <template name="jobOverview">
 <br> <br> <br> <br>
-	<button class="btn btn-primary back hidden">Back</button>
+	<div class="back-button col-md-1">
+		<button class="btn btn-primary back hidden">Back</button>
+	</div>
 	{{#each jobs}}
 		<div class="job-details hidden" id="details-{{this._id}}">
-			<div class="position-info col-md-6">
-				<h3>Position Information</h3>
+			<div class="position-info col-md-4">
+				<h3><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></h3>
 				<ul>
-					<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
-					<li>Contact {{this.contact_name}}:<a href="mailto:{{this.contact_email}}">{{this.contact_email}}</a>, {{this.contact_phone}}</li>
-
+					<li>Contact: {{this.contact_name}}: <a href="mailto:{{this.contact_email}}">{{this.contact_email}}</a>, {{this.contact_phone}}</li>
 					<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
 				 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
 				 <!-- 4 if statements for each one -->
@@ -229,30 +229,32 @@
 				</ul>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-3">
 				<div class="next-steps">
 					<h3>Next Steps</h3>
 					<input name='next_step' type="text" placeholder="Add next step"/>
-					<button type="button" data-id={{this._id}} class="add_next_step btn btn-primary">Save</button>
+					<button type="button" data-id={{this._id}} class="add_next_step btn btn-primary btn-sm">Save</button>
 					<ul>
 						{{#each this.nextStep}}	
 							<li>{{this.text}}</li> 
 						{{/each}}
 					</ul>
 				</div>
-
-				<div class="add-notes">
-					<h3>Notes</h3>
-					<!-- text field with save option, appends to page below the box -->
-					<input name='note' type="text" placeholder="Add note here"/>
-					<button type="button" data-id={{this._id}} class="add_note btn btn-primary btn-sm">Save</button>
-					<ul>
-						{{#each this.note}}	
-							<li>{{this}}</li>
-						{{/each}}
-					</ul>
 				</div>
-			</div>
+
+				<div class="col-md-3">
+					<div class="add-notes">
+						<h3>Notes</h3>
+						<!-- text field with save option, appends to page below the box -->
+						<input name='note' type="text" placeholder="Add note here"/>
+						<button type="button" data-id={{this._id}} class="add_note btn btn-primary btn-sm">Save</button>
+						<ul>
+							{{#each this.note}}	
+								<li>{{this}}</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
 		</div>
 	{{/each}}
 </template>

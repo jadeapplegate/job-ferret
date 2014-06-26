@@ -6,7 +6,7 @@ A Job Search Management Tool built using Meteor: 0.8.1.3. App also includes a bo
 Give the app a try at: [jobferret.meteor.com](https://jobferret.meteor.com)
 
 ##Installation Instructions
-To install this project locally, do the following:
+To install this project locally, first do the following:
 
 - Meteor: `curl https://install.meteor.com | /bin/sh`
 
