@@ -204,7 +204,8 @@
 			<h3>Position Information</h3>
 			<ul>
 				<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
-				<li>Contact: {{this.contact_name}}: {{this.contact_email}}, {{this.contact_phone}}</li>
+				<li>Contact {{this.contact_name}}:<a href="mailto:{{this.contact_email}}">{{this.contact_email}}</a>, {{this.contact_phone}}</li>
+
 				<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
 			 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
 			 <!-- 4 if statements for each one -->

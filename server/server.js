@@ -21,7 +21,11 @@ Router.map(function () {
 
       }else if (this.request.method == 'POST') {
         // INSERT
-        Jobs.insert({title: this.request.body.title, company: this.request.body.company, link: this.request.body.link, pursuing: false, userId: this.request.body.userId});
+   
+      var linkText = this.request.body.link;
+      var link = /http/.test(linkText) ? linkText : "http://" + linkText;
+
+        Jobs.insert({title: this.request.body.title, company: this.request.body.company, link: link, pursuing: false, userId: this.request.body.userId});
         // this.response.end(JSON.stringify(
         //   Posts.insert(this.request.body)
         // ));
