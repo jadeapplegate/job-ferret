@@ -1,5 +1,7 @@
 Jobs = new Meteor.Collection("jobs");
 
+UI._allowJavascriptUrls();
+
 // Meteor.subscribe('Jobs', subsargs) //here is where you can pass arguments
 Meteor.subscribe('Jobs');
 

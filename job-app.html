@@ -63,9 +63,10 @@
 
 
 <template name="bookmarklet">
- <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://final-project-job-app.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '2fubW8hchuLwcpeKs');">Bookmark Job</a>
+ <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://final-project-job-app.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmark Job</a>
 </template>
 
+<!-- '2fubW8hchuLwcpeKs'  -->
 
 <!-- on click, opens up a modal box which displays a form to add a new job -->
 <template name="addJobButton">
