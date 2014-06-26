@@ -21,9 +21,18 @@
 }
 
 body {
-/*	background-color: red;*/
+	background-color: lightblue;
+
 }
 
 .navbar {
 	margin-bottom: 40px;
+}
+
+#main {
+	max-width: 986px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: lightgrey;
+	height: 900px;
 }

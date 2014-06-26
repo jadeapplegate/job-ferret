@@ -5,18 +5,28 @@
 <body>
 <!-- display these templates -->
 	{{>navbar}}
-	{{#if currentUser}}
-		<div id="dashboard">
-			{{>addJobButton}}
-			{{>addJobModal}}
-			{{>interestList}}
-			{{>pursuingList}}
-			{{>bookmarklet}}
-		</div>
-		{{>jobOverview}}
+	<div id="main">
+		{{#if currentUser}}
+			<div id="dashboard">
+				{{>addJobButton}}
+				{{>addJobModal}}
+				<div class="container">
+					<div class='row'>
+						<div class='col-md-6'>
+							{{>interestList}}
+						</div>
+						<div class='col-md-6'>
+							{{>pursuingList}}
+						</div>
+					</div>
+				</div>
+				{{>bookmarklet}}
+			</div>
+			{{>jobOverview}}
 		{{else}}
 			{{>jumbotron}}
-	{{/if}}
+		{{/if}}
+	</div>
 
 
 </body>
@@ -58,7 +68,7 @@
 
 <!-- sign in with Github -->
 <template name="githubOauth">
-	{{> loginButtons align="right"}}
+	{{> loginButtons }}
 </template>
 
 
@@ -177,14 +187,16 @@
 
 <!-- appends list of all jobs pursuing -->
 <template name="pursuingList">
-	<h3>All Pursuing</h3>
-	{{#each jobs}}
-		<div>
-			<a href="{{link}}">{{title}} at {{company}}</a>
-			<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
-			<button class="btn btn-primary btn-lg details" data-id={{_id}}>Details</button>
-		</div>
-	{{/each}}
+	<div class="pursuinglist">
+		<h3>All Pursuing</h3>
+		{{#each jobs}}
+			<div>
+				<a href="{{link}}">{{title}} at {{company}}</a>
+				<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
+				<button class="btn btn-primary btn-lg details" data-id={{_id}}>Details</button>
+			</div>
+		{{/each}}
+</div>
 </template>
 
 

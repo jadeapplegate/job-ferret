@@ -16,6 +16,7 @@ Install packages listed below (if you run into any issues, run `mtr update` and 
 
 ##Meteor Packages
 * accounts-ui: `meteor add accounts-ui`
+* accounts-password: `accounts-password`
 * github oauth: `meteor add github`
 * bootstrap: `meteor add bootstrap`
 * iron-router: `mrt add iron-router`
