@@ -36,23 +36,23 @@ Template.interestList.events({
   'click .pursue_job': function(event, template){
     event.preventDefault();
     var jobId = $(event.target).attr('data-id');
-    var linkText = template.find("input[name=link]").value;
+    var linkText = $(event.target).parent().parent().find("input[name=link]").val();
     var link = /http/.test(linkText) ? linkText : "http://" + linkText;
 
     var data = {
       link: link,
       //???same as below??? dom node/jquery object------- title: $(template.find("input[name=title]")).val(),
-      title: template.find("input[name=title]").value,
-      company: template.find("input[name=company]").value,
-      contact_name: template.find("input[name=contact_name]").value,
-      contact_email: template.find("input[name=contact_email]").value,
-      contact_phone: template.find("input[name=contact_phone]").value,
-      min_salary: template.find("input[name=min_salary]").value,
-      max_salary: template.find("input[name=max_salary]").value,
-      resume: $(template.find("input[name=resume]")).is(':checked'),
-      cover_letter: $(template.find("input[name=cover_letter]")).is(':checked'),
-      portfolio: $(template.find("input[name=portfolio]")).is(':checked'),
-      code_sample: $(template.find("input[name=code_sample]")).is(':checked'),
+      title:  $(event.target).parent().parent().find("input[name=title]").val(),
+      company:  $(event.target).parent().parent().find("input[name=company]").val(),
+      contact_name: $(event.target).parent().parent().find("input[name=contact_name]").val(),
+      contact_email: $(event.target).parent().parent().find("input[name=contact_email]").val(),
+      contact_phone: $(event.target).parent().parent().find("input[name=contact_phone]").val(),
+      min_salary: $(event.target).parent().parent().find("input[name=min_salary]").val(),
+      max_salary: $(event.target).parent().parent().find("input[name=max_salary]").val(),
+      resume:  $(event.target).parent().parent().find("input[name=resume]").is(':checked'),
+      cover_letter: $(event.target).parent().parent().find("input[name=cover_letter]").is(':checked'),
+      portfolio: $(event.target).parent().parent().find("input[name=portfolio]").is(':checked'),
+      code_sample: $(event.target).parent().parent().find("input[name=code_sample]").is(':checked'),
       pursuing: true,
     };
     console.info(data); 
@@ -61,12 +61,12 @@ Template.interestList.events({
   'click .min_salary_dropdown li a' : function(event, template) {
     event.preventDefault();
     var minSalaryDropdown = $(event.target).text();
-    $(template.find('#min_salary')).val(minSalaryDropdown);
+    $(event.target).parent().parent().parent().find('#min_salary').val(minSalaryDropdown);
   },
   'click .max_salary_dropdown li a' : function(event, template) {
     event.preventDefault();
     var maxSalaryDropdown = $(event.target).text();
-    $(template.find('#max_salary')).val(maxSalaryDropdown);
+    $(event.target).parent().parent().parent().find('#max_salary').val(maxSalaryDropdown);
   }
 });
 
