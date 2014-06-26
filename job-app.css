@@ -5,10 +5,6 @@
 	padding: 10px;
 }
 
-.modal:not(.in) {
-	z-index: -4;
-}
-
 .requirements_checkbox {
 	margin-bottom: 10px;
 }
@@ -36,3 +32,38 @@ body {
 	background-color: lightgrey;
 	height: 900px;
 }
+
+.job-card, .pursuing-card {
+	margin: 20px;
+	border: solid black 3px;
+	padding: 5px;
+	background-color: black;
+	border-radius: 5px;
+}
+
+.job-card a, .pursuing-card a {
+	color: white;
+}
+
+.job-card .btn, .pursuing-card .btn {
+	float: right;
+	margin-left: 10px;
+}
+
+.next-steps, .add-notes {
+
+}
+
+.position-info {
+
+}
+
+input {
+	border-radius: 5px;
+	padding-left: 10px;
+}
+
+.btn {
+	margin-left:10px;
+}
+

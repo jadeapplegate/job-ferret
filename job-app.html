@@ -9,6 +9,7 @@
 		{{#if currentUser}}
 			<div id="dashboard">
 				{{>addJobButton}}
+				{{>bookmarklet}}
 				{{>addJobModal}}
 				<div class="container">
 					<div class='row'>
@@ -20,46 +21,45 @@
 						</div>
 					</div>
 				</div>
-				{{>bookmarklet}}
 			</div>
 			{{>jobOverview}}
 		{{else}}
 			{{>jumbotron}}
 		{{/if}}
 	</div>
-
-
 </body>
 
-<!-- responsive, fixed navbar at top of page -->
-	<template name="navbar">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-		      </button>
-		      <a class="brand" href="#">Job App</a>
-		      <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-		          <li><a href="#signOut" id="navbar-sign-out">Sign Out</a></li>
-		        </ul>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</template>
+<template name='navbar'>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">JobFerret</a>
+	    </div>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	       <li><a href="#signOut" id="navbar-sign-out">Sign Out</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+</template>
 
+<!-- if no current user, display this 'splash page' -->
 <template name="jumbotron">
 <div class="container">
    <div class="jumbotron">
-      <h1>Welcome to the app! (only display if not signed in)</h1>
-      <p>(Write something here to describe the app)</p>
+      <h1>Welcome to JobFerret!</h1>
+      <p>Looking for a new job can be hard, staying organized should be easy.</p>
       <p>	{{>githubOauth}}
       </p>
    </div>
@@ -71,17 +71,15 @@
 	{{> loginButtons }}
 </template>
 
-
+<!-- link for user to drag to their toolbar, then they can click on the bookmarklet to add jobs to their account outside of the app -->
 <template name="bookmarklet">
- <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://jobferret.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmark Job</a>
+ <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://jobferret.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmarklet</a>
 </template>
-
-<!-- '2fubW8hchuLwcpeKs'  -->
 
 <!-- on click, opens up a modal box which displays a form to add a new job -->
 <template name="addJobButton">
 	<div class="addJob">
-		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addJobModal">
+		<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addJobModal">
   		Add Job
 		</button>
 	</div>
@@ -116,7 +114,7 @@
 	<div class='interest-list'>
 		<h3>All Jobs of Interest</h3>
 		{{#each jobs}}
-			<div>
+			<div class='job-card'>
 				<a href="{{link}}">{{title}} at {{company}}</a>
 					<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
 				<!-- on click, opens up a modal box which displays a form -->
@@ -175,7 +173,7 @@
 				      </div>
 				      <div class="modal-footer">
 			  	      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-			    	    <button data-id={{_id}} type="button" class="pursue_job btn btn-primary" data-dismiss="modal">Save</button>
+			    	    <button data-id={{_id}} type="button" class="pursue_job btn btn-primary" >Save</button>
 		      		</div>
 		  		  </div>
 		 		  </div>
@@ -190,10 +188,10 @@
 	<div class="pursuinglist">
 		<h3>All Pursuing</h3>
 		{{#each jobs}}
-			<div>
+			<div class='pursuing-card'>
 				<a href="{{link}}">{{title}} at {{company}}</a>
 				<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
-				<button class="btn btn-primary btn-lg details" data-id={{_id}}>Details</button>
+				<button class="btn btn-primary btn-xs details" data-id={{_id}}>Details</button>
 			</div>
 		{{/each}}
 </div>
@@ -209,39 +207,46 @@
 <!-- hide other page elements and display the following job overview -->
 <template name="jobOverview">
 <br> <br> <br> <br>
-	<button class="btn btn-primary btn-lg back hidden">Back</button>
-
+	<button class="btn btn-primary back hidden">Back</button>
 	{{#each jobs}}
 		<div class="job-details hidden" id="details-{{this._id}}">
-			<h3>Position Information</h3>
-			<ul>
-				<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
-				<li>Contact {{this.contact_name}}:<a href="mailto:{{this.contact_email}}">{{this.contact_email}}</a>, {{this.contact_phone}}</li>
+			<div class="position-info col-md-6">
+				<h3>Position Information</h3>
+				<ul>
+					<li><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></li>
+					<li>Contact {{this.contact_name}}:<a href="mailto:{{this.contact_email}}">{{this.contact_email}}</a>, {{this.contact_phone}}</li>
 
-				<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
-			 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
-			 <!-- 4 if statements for each one -->
-			 {{> position_requirements}}
-			</ul>
+					<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>
+				 <!-- if any options (resume, cover_letter, portfolio, code_sample) were checked, then display here -->
+				 <!-- 4 if statements for each one -->
+				 {{> position_requirements}}
+				</ul>
+			</div>
 
-			<h3>Next Steps</h3>
-			<input name='next_step' type="text" placeholder="Add next step"/>
-			<button type="button" data-id={{this._id}} class="add_next_step btn btn-primary">Add Next Step</button>
-			<ul>
-				{{#each this.nextStep}}	
-					<li>{{this.text}}</li> 
-				{{/each}}
-			</ul>
+			<div class="col-md-6">
+				<div class="next-steps">
+					<h3>Next Steps</h3>
+					<input name='next_step' type="text" placeholder="Add next step"/>
+					<button type="button" data-id={{this._id}} class="add_next_step btn btn-primary">Save</button>
+					<ul>
+						{{#each this.nextStep}}	
+							<li>{{this.text}}</li> 
+						{{/each}}
+					</ul>
+				</div>
 
-			<h3>Notes</h3>
-			<!-- text field with save option, appends to page below the box -->
-			<input name='note' type="text" placeholder="Add note here"/>
-			<button type="button" data-id={{this._id}} class="add_note btn btn-primary">Add Note</button>
-			<ul>
-				{{#each this.note}}	
-					<li>{{this}}</li>
-				{{/each}}
-			</ul>
+				<div class="add-notes">
+					<h3>Notes</h3>
+					<!-- text field with save option, appends to page below the box -->
+					<input name='note' type="text" placeholder="Add note here"/>
+					<button type="button" data-id={{this._id}} class="add_note btn btn-primary btn-sm">Save</button>
+					<ul>
+						{{#each this.note}}	
+							<li>{{this}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
 		</div>
 	{{/each}}
 </template>

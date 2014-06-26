@@ -57,6 +57,7 @@ Template.interestList.events({
     };
     console.info(data); 
     Jobs.update({_id: jobId}, {$set: data});
+    $(".modal-backdrop.fade.in").remove();
   },
   'click .min_salary_dropdown li a' : function(event, template) {
     event.preventDefault();
