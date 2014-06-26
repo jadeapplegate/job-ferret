@@ -52,10 +52,10 @@ body {
 	color: white;
 }
 
-/*.job-card .btn, .pursuing-card .btn {
+.job-card .btn, .pursuing-card .btn {
 	float: right;
 	margin-left: 10px;
-}*/
+}
 
 .next-steps, .add-notes {
 
