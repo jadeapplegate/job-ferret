@@ -11,13 +11,13 @@
 
 .jumbotron {
 	margin-top: 80px;
-	background-color: lightgray;
+	background-color: white;
 	padding: 40px;
 	border-radius: 5px;
 }
 
 body {
-/*	background-color: #BDC8D8;*/
+
 
 }
 
@@ -29,9 +29,10 @@ body {
 
 #main {
 /*	max-width: 986px;*/
+	background-image: url(/notebook.png);
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #CDEFFF;
+/*	background-color: #CDEFFF;*/
 	height: 900px;
 	margin-top: 50px;
 }
@@ -44,12 +45,12 @@ body {
 	margin: 20px;
 	border: solid gray 2px;
 	padding: 10px;
-	background-color: #8F9A9C;
+	background-color: white;
 	border-radius: 5px;
 }
 
 .job-card a, .pursuing-card a {
-	color: white;
+	color: #413D3D;
 }
 
 .job-card .btn, .pursuing-card .btn {
