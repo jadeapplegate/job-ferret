@@ -56,7 +56,19 @@ Template.interestList.events({
       pursuing: true,
     };
     console.info(data); 
-    Jobs.update({_id: jobId}, {$set: data})
+    Jobs.update({_id: jobId}, {$set: data});
+    // ("input[name=title]").value,
+    // ("input[name=company]").value,
+    // ("input[name=contact_name]").value,
+    // ("input[name=contact_email]").value,
+    // ("input[name=contact_phone]").value,
+    //   min_salary: template.find("input[name=min_salary]").value,
+    //   max_salary: template.find("input[name=max_salary]").value,
+    //   resume: $(template.find("input[name=resume]")).is(':checked'),
+    //   cover_letter: $(template.find("input[name=cover_letter]")).is(':checked'),
+    //   portfolio: $(template.find("input[name=portfolio]")).is(':checked'),
+    //   code_sample: $(template.find("input[name=code_sample]")).is(':checked'),
+
   },
   'click .min_salary_dropdown li a' : function(event, template) {
     event.preventDefault();
@@ -83,9 +95,9 @@ Template.addJobModal.events({
       pursuing: false
     };
     Jobs.insert(data);
-      $('input[name=title]').val('');
-      $('input[name=company]').val('');
-      $('input[name=link]').val('');
+    $('#addJobModal input[name=title]').val('');
+    $('#addJobModal input[name=company]').val('');
+    $('#addJobModal input[name=link]').val('');
   }
 })
 

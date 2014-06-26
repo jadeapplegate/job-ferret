@@ -103,74 +103,76 @@
 
 <!-- appends list of all jobs of interest -->
 <template name="interestList">
-	<h3>All Jobs of Interest</h3>
-	{{#each jobs}}
-		<div>
-			<a href="{{link}}">{{title}} at {{company}}</a>
-				<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
-			<!-- on click, opens up a modal box which displays a form -->
-			<button class="btn btn-xs btn-primary pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal-{{_id}}">Pursue</button>
-		</div>
-		<div class="modal fade" id="pursuingModal-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Add More Information</h4>
-		      </div>
-		      <div class="modal-body">
-			  	  <input name='link' type="text" class="span6 input-large" placeholder="Link" value={{link}} />
-						<input name='title' type="text" placeholder="Position Title" value={{title}} />
-						<input name='company' type="text" placeholder="Company" value={{company}} />
-						<input name='contact_name' type="text" placeholder="Contact Name"/>
-						<input name='contact_email' type="text" placeholder="Contact Email"/>
-						<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
-						<div class="btn-group" >
-						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Min Salary<span class="caret"></span>
-					  	</button>
-						  <ul class="min_salary_dropdown dropdown-menu" role="menu">
-						  	<li><a href="#">$50,000</a></li>
-		        	  <li><a href="#">$60,000</a></li>
-			          <li><a href="#">$70,000</a></li>
-		  	        <li><a href="#">$80,000</a></li>
-		    	      <li><a href="#">$90,000</a></li>
-		      	    <li><a href="#">$100,000</a></li>
-		        	  <li><a href="#">$110,000</a></li>
-		        	  <li><a href="#">$120,000</a></li>
-		    	    </ul>
-		 	        <input name="min_salary" type="text" id="min_salary" class="form-control">
-						</div>
-						<br>
-						<div class="btn-group">
-						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Max Salary<span class="caret"></span>
-						  </button>
-						  <ul class="max_salary_dropdown dropdown-menu" role="menu">
-			          <li><a href="#">$80,000</a></li>
-			          <li><a href="#">$90,000</a></li>
-			          <li><a href="#">$100,000</a></li>
-			          <li><a href="#">$110,000</a></li>
-			          <li><a href="#">$120,000</a></li>
-			          <li><a href="#">$130,000</a></li>
-			          <li><a href="#">$140,000</a></li>
-			        </ul>
-			        <input name="max_salary" type="text" id="max_salary" class="form-control">
-			      </div>	
-						<div class="requirements_checkbox">
-							 <h5>Application Requirements (select all that apply)</h5>
-								<input type="checkbox" name="resume">Resume<br>
-								<input type="checkbox" name="cover_letter">Cover Letter<br>
-								<input type="checkbox" name="portfolio">Portfolio Link<br>
-								<input type="checkbox" name="code_sample">Code Sample<br>
-			      </div>
-			      <div class="modal-footer">
-		  	      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-		    	    <button data-id={{_id}} type="button" class="pursue_job btn btn-primary" data-dismiss="modal">Save</button>
-	      		</div>
-	  		  </div>
-	 		  </div>
+	<div class='interest-list'>
+		<h3>All Jobs of Interest</h3>
+		{{#each jobs}}
+			<div>
+				<a href="{{link}}">{{title}} at {{company}}</a>
+					<button class="btn btn-xs btn-danger delete" data-id={{_id}}>Delete</button>
+				<!-- on click, opens up a modal box which displays a form -->
+				<button class="btn btn-xs btn-primary pursue" data-id={{_id}} data-toggle="modal" data-target="#pursuingModal-{{_id}}">Pursue</button>
 			</div>
-		</div>
-	{{/each}}
+			<div class="modal fade" id="pursuingModal-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title">Add More Information</h4>
+			      </div>
+			      <div class="modal-body">
+				  	  <input name='link' type="text" class="span6 input-large" placeholder="Link" value={{link}} />
+							<input name='title' type="text" placeholder="Position Title" value={{title}} />
+							<input name='company' type="text" placeholder="Company" value={{company}} />
+							<input name='contact_name' type="text" placeholder="Contact Name"/>
+							<input name='contact_email' type="text" placeholder="Contact Email"/>
+							<input name='contact_phone' type="text" placeholder="Contact Phone"/><br>
+							<div class="btn-group" >
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Min Salary<span class="caret"></span>
+						  	</button>
+							  <ul class="min_salary_dropdown dropdown-menu" role="menu">
+							  	<li><a href="#">$50,000</a></li>
+			        	  <li><a href="#">$60,000</a></li>
+				          <li><a href="#">$70,000</a></li>
+			  	        <li><a href="#">$80,000</a></li>
+			    	      <li><a href="#">$90,000</a></li>
+			      	    <li><a href="#">$100,000</a></li>
+			        	  <li><a href="#">$110,000</a></li>
+			        	  <li><a href="#">$120,000</a></li>
+			    	    </ul>
+			 	        <input name="min_salary" type="text" id="min_salary" class="form-control">
+							</div>
+							<br>
+							<div class="btn-group">
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Max Salary<span class="caret"></span>
+							  </button>
+							  <ul class="max_salary_dropdown dropdown-menu" role="menu">
+				          <li><a href="#">$80,000</a></li>
+				          <li><a href="#">$90,000</a></li>
+				          <li><a href="#">$100,000</a></li>
+				          <li><a href="#">$110,000</a></li>
+				          <li><a href="#">$120,000</a></li>
+				          <li><a href="#">$130,000</a></li>
+				          <li><a href="#">$140,000</a></li>
+				        </ul>
+				        <input name="max_salary" type="text" id="max_salary" class="form-control">
+				      </div>	
+							<div class="requirements_checkbox">
+								 <h5>Application Requirements (select all that apply)</h5>
+									<input type="checkbox" name="resume">Resume<br>
+									<input type="checkbox" name="cover_letter">Cover Letter<br>
+									<input type="checkbox" name="portfolio">Portfolio Link<br>
+									<input type="checkbox" name="code_sample">Code Sample<br>
+				      </div>
+				      <div class="modal-footer">
+			  	      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			    	    <button data-id={{_id}} type="button" class="pursue_job btn btn-primary" data-dismiss="modal">Save</button>
+		      		</div>
+		  		  </div>
+		 		  </div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
 </template>
 
 <!-- appends list of all jobs pursuing -->
