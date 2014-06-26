@@ -33,8 +33,8 @@
       $('#bookmarklet-modal-job-ferret').remove(); //should really put this in the function on line 38 as a callback rather than here
     });
     var sendData = function() {
-      //http://whatever.meteor.com/api/
-      $.post( "http://final-project-job-app.meteor.com/api/", {title: $("#bookmarklet-modal-job-ferret-title").val(), company: $("#bookmarklet-modal-job-ferret-company").val(), link: $("#bookmarklet-modal-job-ferret-link").val(), userId: $('body').attr('data-job-ferret-user-id')}, function() { 
+      //http://jobferret.meteor.com/api/
+      $.post( "http://jobferret.meteor.com/api/", {title: $("#bookmarklet-modal-job-ferret-title").val(), company: $("#bookmarklet-modal-job-ferret-company").val(), link: $("#bookmarklet-modal-job-ferret-link").val(), userId: $('body').attr('data-job-ferret-user-id')}, function() { 
       });
     };
     // .on click for Cancel
