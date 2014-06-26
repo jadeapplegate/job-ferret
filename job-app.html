@@ -78,7 +78,7 @@
 
 <!-- link for user to drag to their toolbar, then they can click on the bookmarklet to add jobs to their account outside of the app -->
 <template name="bookmarklet">
- <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://jobferret.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmarklet</a>
+ <a id="bookmarklet" href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://jobferret.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmarklet</a>
 </template>
 
 <!-- on click, opens up a modal box which displays a form to add a new job -->
@@ -219,7 +219,7 @@
 	{{#each jobs}}
 		<div class="job-details hidden" id="details-{{this._id}}">
 			<div class="position-info col-md-4">
-				<h3><a href="{{this.link}}">{{this.title}} at {{this.company}}</a></h3>
+				<h3><a id="job-title-link" href="{{this.link}}">{{this.title}} at {{this.company}}</a></h3>
 				<ul>
 					<li>Contact: {{this.contact_name}}: <a href="mailto:{{this.contact_email}}">{{this.contact_email}}</a>, {{this.contact_phone}}</li>
 					<li> Salary Range: {{this.min_salary}} to {{this.max_salary}}</li>

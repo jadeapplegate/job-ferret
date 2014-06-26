@@ -15,11 +15,9 @@
 	padding: 40px;
 	border-radius: 5px;
 }
-
-body {
-
-
-}
+ #bookmarklet, #job-title-link {
+ 	color: coral;
+ }
 
 .navbar {
 	margin-bottom: 40px;
@@ -43,9 +41,9 @@ body {
 
 .job-card, .pursuing-card {
 	margin: 20px;
-	border: solid gray 2px;
+	border: solid #413D3D 2px;
 	padding: 10px;
-	background-color: white;
+	background-color: #F6F6F6;
 	border-radius: 5px;
 }
 
@@ -56,15 +54,21 @@ body {
 .job-card .btn, .pursuing-card .btn {
 	float: right;
 	margin-left: 10px;
+	color: #F6F6F6;
 }
 
-.next-steps, .add-notes {
-
+.btn.btn-primary {
+	background-color: paleturquoise;
+	border: solid #413D3D 2px;
+	color: #413D3D;
 }
 
-.position-info {
-
+.btn.btn-danger {
+	background-color: coral;
+	border: solid #413D3D 2px;
+	color: #413D3D;
 }
+
 
 input {
 	border-radius: 3px;
