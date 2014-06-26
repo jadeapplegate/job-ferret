@@ -19,6 +19,14 @@
  	color: coral;
  }
 
+#bookmarklet {
+	border-radius: 5px;
+	border: solid #413D3D 2px;
+	padding: 10px;
+	padding-bottom: 6px;
+	background-color: #F6F6F6;
+
+}
 .navbar {
 	margin-bottom: 40px;
 	background-color: #413D3D;
