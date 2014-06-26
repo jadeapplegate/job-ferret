@@ -9,7 +9,7 @@
 		{{#if currentUser}}
 			<div id="dashboard">
 <!-- 				{{>addJobButton}} -->
-				{{>bookmarklet}}
+<!-- 				{{>bookmarklet}} -->
 				{{>addJobModal}}
 				<div class="container">
 					<div class='row'>
@@ -22,6 +22,7 @@
 							{{>pursuingList}}
 						</div>
 						<div class="right-panel col-md-1">
+											{{>bookmarklet}}
 					  </div>
 					</div>
 				</div>
@@ -77,7 +78,7 @@
 
 <!-- link for user to drag to their toolbar, then they can click on the bookmarklet to add jobs to their account outside of the app -->
 <template name="bookmarklet">
- <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://jobferret.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmark Job</a>
+ <a href="javascript: (function(rand, userId){if(window.myBookmarklet!==undefined){myBookmarklet();}else{var body = document.getElementsByTagName('body')[0]; body.setAttribute('data-job-ferret-user-id', ''+userId+'');document.body.appendChild(document.createElement('script')).src='http://jobferret.meteor.com/bookmarklet2.js%3f'+rand+'';}})(Math.round(Math.random()*10000000000000), '{{currentUser._id}}');">Bookmarklet</a>
 </template>
 
 <!-- on click, opens up a modal box which displays a form to add a new job -->
@@ -117,6 +118,7 @@
 <template name="interestList">
 	<div class='interest-list'>
 		<h3 class="interest-list-header">All Jobs of Interest</h3>{{>addJobButton}}
+
 		{{#each jobs}}
 			<div class='job-card'>
 				<a href="{{link}}">{{title}} at {{company}}</a>
