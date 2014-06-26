@@ -83,6 +83,9 @@ Template.addJobModal.events({
       pursuing: false
     };
     Jobs.insert(data);
+      $('input[name=title]').val('');
+      $('input[name=company]').val('');
+      $('input[name=link]').val('');
   }
 })
 

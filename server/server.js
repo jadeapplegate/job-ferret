@@ -30,8 +30,6 @@ Router.map(function () {
   });
 });
 
-
-
 Jobs.allow({ 
   insert:function(userId, document) {  
     // if (userId) {  //e.g check if admin
