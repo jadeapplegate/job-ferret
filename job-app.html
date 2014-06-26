@@ -8,17 +8,21 @@
 	<div id="main">
 		{{#if currentUser}}
 			<div id="dashboard">
-				{{>addJobButton}}
+<!-- 				{{>addJobButton}} -->
 				{{>bookmarklet}}
 				{{>addJobModal}}
 				<div class="container">
 					<div class='row'>
-						<div class='col-md-6'>
+						<div class="left-panel col-md-1">
+						</div>
+						<div class='col-md-5'>
 							{{>interestList}}
 						</div>
-						<div class='col-md-6'>
+						<div class='col-md-5'>
 							{{>pursuingList}}
 						</div>
+						<div class="right-panel col-md-1">
+					  </div>
 					</div>
 				</div>
 			</div>
@@ -80,7 +84,7 @@
 <template name="addJobButton">
 	<div class="addJob">
 		<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addJobModal">
-  		Add Job
+  		Add New Job
 		</button>
 	</div>
 </template>
@@ -112,7 +116,7 @@
 <!-- appends list of all jobs of interest -->
 <template name="interestList">
 	<div class='interest-list'>
-		<h3>All Jobs of Interest</h3>
+		<h3 class="interest-list-header">All Jobs of Interest</h3>{{>addJobButton}}
 		{{#each jobs}}
 			<div class='job-card'>
 				<a href="{{link}}">{{title}} at {{company}}</a>
@@ -186,7 +190,7 @@
 <!-- appends list of all jobs pursuing -->
 <template name="pursuingList">
 	<div class="pursuinglist">
-		<h3>All Pursuing</h3>
+		<h3 class="pursuing-list-header">All Pursuing</h3>
 		{{#each jobs}}
 			<div class='pursuing-card'>
 				<a href="{{link}}">{{title}} at {{company}}</a>

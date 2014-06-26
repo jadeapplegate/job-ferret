@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 
 .addJob {
-	margin-top: 40px;
+/*	margin-top: 40px;*/
 	padding: 10px;
 }
 
@@ -17,27 +17,34 @@
 }
 
 body {
-	background-color: lightblue;
+/*	background-color: #BDC8D8;*/
 
 }
 
 .navbar {
 	margin-bottom: 40px;
+	background-color: #413D3D;
+	color: lightsteel;
 }
 
 #main {
-	max-width: 986px;
+/*	max-width: 986px;*/
 	margin-left: auto;
 	margin-right: auto;
-	background-color: lightgrey;
+	background-color: #C5E0DC;
 	height: 900px;
+	margin-top: 50px;
+}
+
+.left-panel, .right-panel {
+/*		background-color: #BDC8D8;*/
 }
 
 .job-card, .pursuing-card {
 	margin: 20px;
-	border: solid black 3px;
-	padding: 5px;
-	background-color: black;
+	border: solid gray 2px;
+	padding: 10px;
+	background-color: #8F9A9C;
 	border-radius: 5px;
 }
 
@@ -45,10 +52,10 @@ body {
 	color: white;
 }
 
-.job-card .btn, .pursuing-card .btn {
+/*.job-card .btn, .pursuing-card .btn {
 	float: right;
 	margin-left: 10px;
-}
+}*/
 
 .next-steps, .add-notes {
 
@@ -67,3 +74,6 @@ input {
 	margin-left:10px;
 }
 
+.interest-list-header, .pursuing-list-header {
+	margin-left: 20px;
+}
