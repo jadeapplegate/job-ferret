@@ -24,7 +24,7 @@ UI.registerHelper('format_position_requirements', function(job) {
 
 
 Template.interestList.jobs = function () {
-  return Jobs.find({pursuing: false});
+  return Jobs.find({userId: Meteor.userId(), pursuing: false});
 };
 
 Template.interestList.events({
@@ -91,7 +91,7 @@ Template.addJobModal.events({
 })
 
 Template.pursuingList.jobs = function () {
-  return Jobs.find({pursuing: true});
+  return Jobs.find({userId: Meteor.userId(), pursuing: true});
 };
 
 Template.pursuingList.events({
@@ -126,7 +126,7 @@ Template.navbar.events({
 });
 
 Template.jobOverview.jobs = function(){
-  var jobs = Jobs.find({pursuing:true}).fetch();
+  var jobs = Jobs.find({userId: Meteor.userId(), pursuing:true}).fetch();
   return jobs;
 }
 
